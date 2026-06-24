@@ -63,16 +63,18 @@ examples/
 
 1. **「Use this template」** でこのリポジトリを複製（private 推奨）
 2. 複製した repo を clone し、Claude Code で開く
-3. **`/setup`** — Meet Recordings フォルダの URL と Chatwork API トークンを登録（room_id・folder_id を取得し `~/.config/meet-knowledge/config.json` に 600 で保存。すでに設定済みでも上書き実行）
-4. `/web-setup` — クラウド routine が repo を読めるよう GitHub を接続（PC オフ運用に必要）
-5. `/meet-knowledge-schedule` — クラウド routine（検出・投稿／保存）を作成
+3. **`/setup`** — これ 1 つで完了:
+   - Meet Recordings フォルダの URL と Chatwork API トークンを登録（room_id・folder_id を取得し `~/.config/meet-knowledge/config.json` に 600 で保存。すでに設定済みでも上書き）
+   - GitHub 接続を確認し、未接続なら **`/web-setup`** の実行を案内（ブラウザで GitHub 連携。**これだけはユーザー操作が必要**）
+   - クラウド routine（検出・投稿／保存）を作成
 
 以降は会議のたびにマイチャットへ候補が届くので、保存したい番号を返信するだけ。
 - まず手元で試す: `/meet-knowledge`（必要なら `/loop 1h /meet-knowledge`）
+- 実行タイミングを変える: `/meet-knowledge-schedule`
 
 ## クラウド routine（PC オフ運用）
 
-`/meet-knowledge-schedule` で次の 2 本を作成します（時刻は変更可）:
+`/setup` が次の 2 本を自動作成します（時刻の変更は `/meet-knowledge-schedule`）:
 
 | routine | 役割 | 例のスケジュール |
 |---|---|---|
