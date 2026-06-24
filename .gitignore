@@ -1,0 +1,7 @@
+# OS / エディタ
+.DS_Store
+*.log
+
+# ローカル設定（Chatwork トークン等。本来 ~/.config 配下だが念のため）
+config.json
+.config/
