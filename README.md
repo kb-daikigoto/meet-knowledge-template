@@ -35,11 +35,22 @@ Google Meet（要約 ON）
   meet-knowledge/SKILL.md          本体：検出 → Chatwork 投稿 → 番号承認 → 保存
   setup/SKILL.md                   /setup：Meet フォルダ URL と Chatwork トークンの登録
   meet-knowledge-schedule/SKILL.md クラウド routine の作成・実行タイミング設定
-knowledge/                         保存されたナレッジの出力先
 examples/
   config.example.json              設定ファイルの形（秘密情報は入れない）
   sample-knowledge.md              保存されるナレッジの例（架空）
 ```
+
+## ナレッジの保存先（重要）
+
+検出・承認されたナレッジは **この（スキルが入った）リポジトリには保存しません**。
+保存先は次のいずれかです:
+
+- `knowledge-base:save`（既存の知識ベースプラグインが使える環境）
+- それが無い環境では、`~/.config/meet-knowledge/config.json` の `knowledge_repo`
+  もしくは環境変数 `KNOWLEDGE_REPO` で指定した**知識ベース専用リポジトリ**
+
+どちらも未設定のときは保存せず、Chatwork に「保存先が未設定」と通知して候補を未解決のまま残します
+（このリポジトリへは決して push しません）。
 
 ## 前提
 
