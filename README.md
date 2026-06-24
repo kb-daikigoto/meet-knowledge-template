@@ -33,8 +33,8 @@ Google Meet（要約 ON）
 ```
 .claude/skills/
   meet-knowledge/SKILL.md          本体：検出 → Chatwork 投稿 → 番号承認 → 保存
-  setup/SKILL.md                   /setup：Chatwork 登録＋フォルダ ID 自動取得＋ルーティン自動作成
-  meet-knowledge-schedule/SKILL.md 実行タイミングの変更
+  setup/SKILL.md                   /setup：Meet フォルダ URL と Chatwork トークンの登録
+  meet-knowledge-schedule/SKILL.md クラウド routine の作成・実行タイミング設定
 knowledge/                         保存されたナレッジの出力先
 examples/
   config.example.json              設定ファイルの形（秘密情報は入れない）
@@ -52,18 +52,16 @@ examples/
 
 1. **「Use this template」** でこのリポジトリを複製（private 推奨）
 2. 複製した repo を clone し、Claude Code で開く
-3. `/web-setup` — クラウド routine が repo を読めるよう GitHub を接続
-4. **`/setup`** — これ一回で完了:
-   - Chatwork トークンを登録（マイチャット room_id・Meet Recordings フォルダ ID を自動取得し `~/.config/meet-knowledge/config.json` に 600 で保存）
-   - **このデバイス用にクラウド routine（検出・投稿／保存）を自動作成**
+3. **`/setup`** — Meet Recordings フォルダの URL と Chatwork API トークンを登録（room_id・folder_id を取得し `~/.config/meet-knowledge/config.json` に 600 で保存。すでに設定済みでも上書き実行）
+4. `/web-setup` — クラウド routine が repo を読めるよう GitHub を接続（PC オフ運用に必要）
+5. `/meet-knowledge-schedule` — クラウド routine（検出・投稿／保存）を作成
 
 以降は会議のたびにマイチャットへ候補が届くので、保存したい番号を返信するだけ。
 - まず手元で試す: `/meet-knowledge`（必要なら `/loop 1h /meet-knowledge`）
-- 実行タイミングを変える: `/meet-knowledge-schedule`
 
 ## クラウド routine（PC オフ運用）
 
-`/setup` が次の 2 本を自動作成します（時刻変更は `/meet-knowledge-schedule`）:
+`/meet-knowledge-schedule` で次の 2 本を作成します（時刻は変更可）:
 
 | routine | 役割 | 例のスケジュール |
 |---|---|---|
